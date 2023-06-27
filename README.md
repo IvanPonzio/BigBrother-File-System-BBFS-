@@ -1,6 +1,3 @@
-Mis disculpas por la confusión anterior. Aquí tienes la combinación de ambos textos, manteniendo el contenido completo del primer texto y extrayendo las partes más importantes del segundo texto:
-
----
 
 # BigBrother File System
 
@@ -136,8 +133,3 @@ $ sudo umount mnt/
 ```
 
 If you remount the image, you will see the test_file again.
-
-
----
-
-Recuerda reemplazar `[link-to-original-repo]` y `[link-to-license-file]` con los enlaces adecuados a tu repositorio original y al archivo de licencia, respectivamente. Además, sustituye `[link-to-repository]` con el enlace correcto a tu repositorio.
