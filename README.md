@@ -1,3 +1,7 @@
+Mis disculpas por la confusión anterior. Aquí tienes la combinación de ambos textos, manteniendo el contenido completo del primer texto y extrayendo las partes más importantes del segundo texto:
+
+---
+
 # BigBrother File System
 
 The BigBrother File System is a modified user-space FAT file system that adds new functionalities on top of the original implementation. This repository contains the source code for the BigBrother File System, which is based on the FAT file system implementation available in [this repository](https://github.com/ebiggers/fat-fuse).
@@ -44,3 +48,96 @@ We would like to thank the contributors to the original FAT file system implemen
 
 For any questions, suggestions, or inquiries, please contact the project maintainer at [email protected]
 
+---
+
+#### Compilation and Running
+
+To compile and run the BigBrother File System, please follow these steps:
+
+1. Install the required dependencies, including `libfuse-dev`, `glib`, and `check`.
+   ```shell
+   $ sudo apt-get install libfuse-dev
+   ```
+
+2. Clone this repository to your local machine.
+   ```shell
+   $ git clone [(https://github.com/IvanPonzio/BigBrother-File-System-BBFS-)]
+
+   $ cd bigbrother-file-system
+   ```
+   or 
+
+   ```shell
+   cd fat-fuse
+    ```
+
+3. Build and compile the file system source code.
+   ```shell
+   $ make
+   ```
+
+4. Create a directory
+
+ to mount the file system.
+   ```shell
+   $ mkdir mnt
+   ```
+
+5. Mount the file system on the desired directory.
+   ```shell
+   $ ./bigbrother-fs [path-to-fsfat.img] ./mnt
+    ```
+    or
+
+    ```shell
+   $ ./fat-fuse path/to/fsfat.img ./mnt
+   ```
+
+If the program fails unexpectedly, the file system may not be unmounted correctly. In that case, it is necessary to manually unmount it using the native commands of the operating system.
+
+
+
+## Creating and Mounting a Test Image
+
+
+1. To create an empty FAT32-formatted image, first create a file file.img with 35MB of "zeros" inside (for FAT32, the minimum file size is around 33MB):
+
+```shell
+$ dd if=/dev/zero of=file.img count=35 bs=1M
+```
+
+Then, format the image with the correct format:
+
+```shell
+$ mkfs.vfat -F 32 -v ./file.img
+```
+
+2. Next, to mount the image and be able to add things, you need to use the system's mount function and give write permissions to all users at the mount point (which requires sudo permissions). First, create the directory where you will see the mounted files. Then, mount the image:
+
+```shell
+$ mkdir mnt
+```
+
+3. The following command mounts our file.img image to the mnt directory and grants all permissions.
+   
+```shell
+$ sudo mount -t vfat file.img mnt/ -o umask=000
+```
+Add something to the image:
+
+```shell
+$ echo "Hello, this is a file" > mnt/test_file
+```
+
+Finally, you need to unmount the image:
+
+```shell
+$ sudo umount mnt/
+```
+
+If you remount the image, you will see the test_file again.
+
+
+---
+
+Recuerda reemplazar `[link-to-original-repo]` y `[link-to-license-file]` con los enlaces adecuados a tu repositorio original y al archivo de licencia, respectivamente. Además, sustituye `[link-to-repository]` con el enlace correcto a tu repositorio.
